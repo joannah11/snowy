@@ -1,0 +1,33 @@
+drawflakes();
+drawallsnowflakes();
+
+function drawflakes() {
+  moveTo(randomNumber(100,300),randomNumber(100, 120));
+  turnTo(270);
+  drawsnowflakes(randomNumber(5,10));
+}
+
+function drawsnowflakes(radius){
+  penRGB(0,0,randomNumber(100,200), 0.7);
+  penWidth(3);
+  penDown();
+  arcRight(10, radius);
+  arcLeft(60, radius);
+  
+  // Repeatedly switch between left and right
+  for(var i = 0; i < 10; i++){
+    arcRight(60,radius);
+    arcLeft(30,radius);
+    arcRight(255, radius);
+    arcLeft(60, radius);
+  }
+  penUp();
+}
+
+function drawallsnowflakes() {
+  for (var i = 0; i < 7; i++) {
+    moveTo(randomNumber(0,320),randomNumber(20,250));
+    turnTo(0);
+    drawsnowflakes(randomNumber(5,20),randomNumber(5,20),randomNumber(5,20),120);
+  }
+}
